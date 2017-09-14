@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Distribution & Growth</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+    <script src='./data.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:fixed; left:0; right:30%; bottom:0; height:75%; }
+        sidebar {position:fixed; text-align: left; width:30%; padding:1%;}
+    </style>
+</head>
+
+<body>
+<div id='map'>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpcmxleWx1IiwiYSI6ImNqNnZuYWE4ajFrNnIzMmxhZTNpZ2p4bzAifQ.mhIwlLTJVAJl6siryT8i4Q';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/shirleylu/cj7kfvh1m7fst2rnvuxhht65g',
+    center: [151.2093, -33.8688],
+    zoom: 10,
+    pitch: 35,
+    bearing: 30
+});
+
+map.on('load', function() {
+
+    map.addLayer({
+         'id': 'room-extrusion',
+        'type': 'fill-extrusion',
+        'source': {
+            // Geojson Data source used in vector tiles, documented at
+            // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
+            'type': 'geojson',
+            'data': data
+        },
+        'paint': {
+            // See the Mapbox Style Spec for details on property functions
+            // https://www.mapbox.com/mapbox-gl-style-spec/#types-function
+            'fill-extrusion-color': {
+                // Get the fill-extrusion-color from the source 'color' property.
+                'property': 'Pro',
+                "stops":[
+                [0, '#FFBC42'],
+                [0.4, '#73D2DE'],
+                [0.7, '#8F2D56']
+                ]
+               
+            },
+            'fill-extrusion-height': {
+                // Get fill-extrusion-height from the source 'height' property.
+                'property': 'growth',
+                "stops":[
+                [0.0, 0],
+                [5, 65535]
+                ]
+              
+            },
+            'fill-extrusion-base': {
+                // Get fill-extrusion-base from the source 'base_height' property.
+                'property': 'base_height',
+                'type': 'identity'
+            },
+            // Make extrusions slightly opaque for see through indoor walls.
+            'fill-extrusion-opacity': 0.9
+        }
+    });
+});
+</script>
+<header>
+   <h1> MARITAL STATUS OF NSW </h1>  
+   <div class = "topnav" id="myTopnav">
+   <a href="index.html"><B>1</B> | ABOUT</a>
+   <a href="page1.html" class="active"> <B>2</B> | DISTRIBUTION</a>
+   <a href="page2.html"> <B>3</B> | SPACE</a>
+   <a href="page3.html"> <B>4</B> | PROPERTY</a>
+   <a href="page4.html"> <B>5</B> | SOURCES</a>
+</div>
+</header>
+
+<div class= "sidebar">
+<h2> 2 | DISTRIBUTION & GROWTH </h2>
+<p>As can be seen in the map, it shows that people aged 25-34, who are married, are located away from the city and populated areas near Campbelltown and Parramatta. According to the 2016 Census, there are about 16,412 people in Surry Hills with an average of 1.4 families with children out of 3,173 families. On the other hand, out of 158, 401 people in Campbelltown, there is 42,092 families. This movement could be due to a few reasons, firstly, away from the city housing prices are cheaper and there is more land space. Families, particularly with children, prefer to have a backyard with the house which can only be found away from the city. </p>
+<p>Furthermore, most of the growth of married people, between 2011 and 2016, is occurring away from the city. Although people are making more money in this day and age, house properties are also increasing. According to an article by Duke (2017), the median house price is $1.15 million compared to the prices in 2012 which was about $646,000. In addition, she also points out that there has been a shift towards Parramatta with the younger generation since they have cheaper option and has become more appealing. In recent years, attention has been placed on Parramatta with new development with infrastructure and building development. 
+</p>
+</div>
+
+<style>
+header{position: static; top:0; height: 25%; text-align: center; width:100%;}
+
+h1{
+    margin: auto;
+    text-align: center;
+    color: #212121 ;
+    font-family: bebas;
+    font-weight: lighter;
+    letter-spacing: 5px;
+    font-size: 40px;
+    text-shadow: 4px 3px #E5E7E9;
+    padding: 60px 50px 30px 50px;}
+
+    .topnav {
+  overflow: hidden;
+  margin: 0;
+  display: inline-block;
+  list-style-type: none;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-family: bebas;
+    letter-spacing: 3px;
+  font-size: 11px;
+}
+
+.topnav a:hover {
+  color: #496CA1;
+}
+
+.topnav a.active {
+    display: block;
+    text-align: center;
+    background-color: #496CA1;
+    color: white;
+    opacity: 0.7;
+}
+
+
+h2{
+    margin-left: 1000px;
+    text-align: center;
+    color: #212121;
+    font-family: oswald;
+    font-weight: lighter;
+    letter-spacing: 5px;
+    font-size: 20px;
+    padding: 0 50px 10px 50px;
+}
+
+p{
+    margin-left: 1020px;
+    margin-right: 10px;
+    text-indent: 30px;
+    text-align: left;
+    font-size:14px;
+    color: #000000;
+    line-height: 200%;
+}
+
+h3{
+        margin-left: 1000px;
+    text-align: center;
+    color: #212121;
+    font-family: oswald;
+    font-weight: lighter;
+    letter-spacing: 5px;
+    font-size: 15px;
+    padding-top: 30px;
+}
+
+h4{
+        margin-left: 1000px;
+    text-align: center;
+    color: #212121;
+    font-family: segoe UI;
+    font-weight: lighter;
+    letter-spacing: 5px;
+    font-size: 10px;
+}
+
+footer{
+    margin-left: 1000px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+</style>
+<h3> SHIRLEY LU </h3>
+<h4> UBRAN MODELLING </h4>
+
+<footer> 
+<a href="https://github.com/ShirleysmLu"> <img src="GitHub-Mark.png" style="width: 2%" align="center"></a>
+ </footer>
+
+</body>
+
+</html>
