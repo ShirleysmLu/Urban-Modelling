@@ -81,8 +81,6 @@ img{
 table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
-		margin-left: 250px;
-	margin-right: 250px;
 	font-size:14px;
 		font-family: Droid Serif;
 }
@@ -98,6 +96,8 @@ td{
 }
 
 table{
+	margin-left: 250px;
+	margin-right: 250px;
 	text-align: center;
 }
 
