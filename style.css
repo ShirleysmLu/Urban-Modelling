@@ -126,7 +126,7 @@ footer{
 }
 
 .headerimage{
+	display: table;
 	float: left;
-	display: inline-block;
 	text-align: center;
 }
