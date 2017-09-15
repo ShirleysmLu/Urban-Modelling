@@ -98,7 +98,7 @@ td{
 }
 
 table{
-	width: 
+	text-align: center;
 }
 
 h3{
@@ -126,9 +126,10 @@ footer{
 }
 
 .headerimage{
-	display: inline-block;
-	text-align: center;
-	margin-left: 10%;
-	margin-right: 10%;
-	
+	display: table;
+}
+
+.ImageTab{
+	margin-right: 5%;
+	margin-left:5%;
 }
