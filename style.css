@@ -125,4 +125,7 @@ footer{
 	padding-bottom: 30px;
 }
 
-
+.headerimage{
+	float: left;
+	display: inline-block;
+}
